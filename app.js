@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const { json } = require('express');
 require('dotenv').config();
+require('./config/db')
 
 
 const productRouter = require('./routes/product.route')

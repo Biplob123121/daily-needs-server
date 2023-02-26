@@ -16,7 +16,9 @@ const addProduct = async (req, res) => {
             name: req.body.name,
             price: req.body.price,
             picture: req.body.picture,
-            minOrder: req.body.minOrder
+            minOrder: req.body.minOrder,
+            category: req.body.category,
+            description: req.body.description,
         })
         await newProduct.save();
         res.status(201).json({ acknowledged: true, newProduct });

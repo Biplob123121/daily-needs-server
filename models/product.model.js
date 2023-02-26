@@ -16,6 +16,14 @@ const productSchema =  mongoose.Schema({
     minOrder:{
         type: String,
         require: true,
+    },
+    category:{
+        type: String,
+        require: true,
+    },
+    description:{
+        type: String,
+        require: true,
     }
 })
 
