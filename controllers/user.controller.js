@@ -35,5 +35,16 @@ const updateUser = async (req, res) => {
     }
 }
 
+const getAdmin = async (req, res) => {
+    try {
+        const email = req.params.email;
+        const admin = await Users.findOne({ email: email })
+        res.send({ isAdmin: admin?.role === 'admin' })
 
-module.exports = { createUser, getAllUser, updateUser }
+    } catch (error) {
+        res.status(500).send({ message: error.message });
+    }
+}
+
+
+module.exports = { createUser, getAllUser, updateUser, getAdmin }
