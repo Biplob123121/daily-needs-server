@@ -3,8 +3,8 @@ const cors = require('cors');
 require('dotenv').config();
 require('./config/db')
 
-
-const productRouter = require('./routes/product.route')
+const productRouter = require('./routes/product.route');
+const userRouter = require('./routes/user.route');
 
 const app = express();
 
@@ -14,7 +14,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/products', productRouter)
+app.use('/api/products', productRouter);
+app.use('/api/users', userRouter);
 
 
 app.get('/', (req, res) => {

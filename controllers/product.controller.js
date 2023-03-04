@@ -4,7 +4,16 @@ const Products = require('../models/product.model');
 const getProducts = async (req, res) => {
     try {
         const allProducts = await Products.find();
-        res.status(200).json({ acknowledged: true, allProducts });
+        res.status(200).json(allProducts);
+    } catch (error) {
+        res.status(500).send({ message: error.message });
+    }
+};
+const getSelectedProducts = async (req, res) => {
+    try {
+        const category = req.query.category;
+        const selectedProducts = await Products.find({category: category});
+        res.status(200).json(selectedProducts);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
@@ -27,4 +36,4 @@ const addProduct = async (req, res) => {
     }
 }
 
-module.exports = { getProducts, addProduct }
+module.exports = { getProducts, addProduct, getSelectedProducts }
