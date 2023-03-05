@@ -5,6 +5,7 @@ require('./config/db')
 
 const productRouter = require('./routes/product.route');
 const userRouter = require('./routes/user.route');
+const orderRouter = require('./routes/order.route');
 
 const app = express();
 
@@ -16,6 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
+app.use('/api/orders', orderRouter);
+
+
 
 
 app.get('/', (req, res) => {
