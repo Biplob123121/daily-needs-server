@@ -8,7 +8,7 @@ router.post('/', newOrder);
 router.get('/', getOrder);
 router.get('/my-order/', getIndividualOrder);
 router.get('/:id', getSingleOrder);
-router.patch('/', updateOrder)
+router.patch('/:id', updateOrder)
 router.delete('/:id', deleteOrder)
 
 
