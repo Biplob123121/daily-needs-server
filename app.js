@@ -8,6 +8,7 @@ const productRouter = require('./routes/product.route');
 const userRouter = require('./routes/user.route');
 const orderRouter = require('./routes/order.route');
 const paymentRouter = require('./routes/payment.route');
+const reviewRouter = require('./routes/review.route');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
 app.use('/api/orders', orderRouter);
 app.use('/api/payments', paymentRouter);
+app.use('/api/reviews', reviewRouter);
 
 
 
