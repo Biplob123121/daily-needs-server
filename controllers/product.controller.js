@@ -12,7 +12,7 @@ const getProducts = async (req, res) => {
 const getSelectedProducts = async (req, res) => {
     try {
         const category = req.query.category;
-        const selectedProducts = await Products.find({category: category});
+        const selectedProducts = await Products.find({ category: category });
         res.status(200).json(selectedProducts);
     } catch (error) {
         res.status(500).send({ message: error.message });
@@ -36,4 +36,18 @@ const addProduct = async (req, res) => {
     }
 }
 
-module.exports = { getProducts, addProduct, getSelectedProducts }
+const searchProduct = async (req, res) => {
+    try {
+        const productName = req.query.searchTerm;
+        let searchProduct = await Products.find({
+            "$or": [
+                { name: { '$regex': productName, '$options' : 'i' } }
+            ]
+        })
+        res.status(200).json(searchProduct);
+    } catch (error) {
+        res.status(500).send({ message: error.message });
+    }
+}
+
+module.exports = { getProducts, addProduct, getSelectedProducts, searchProduct }
